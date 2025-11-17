@@ -1,0 +1,45 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "crossX Gateway", "version": "0.1.0" },
+  "paths": {
+    "/health": { "get": { "responses": { "200": { "description": "OK" } } } },
+    "/orders": {
+      "post": {
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PlaceOrderRequest" } } }
+        },
+        "responses": { "200": { "description": "Order placed", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/OrderStatus" } } } } }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Order status", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/OrderStatus" } } } }, "404": { "description": "Not found" } }
+      }
+    },
+    "/aggregate/{symbol}": {
+      "get": {
+        "parameters": [{ "name": "symbol", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Aggregated quote", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/AggregateQuote" } } } } }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PlaceOrderRequest": {
+        "type": "object",
+        "properties": { "symbol": { "type": "string" }, "side": { "type": "string", "enum": ["BUY", "SELL"] }, "price": { "type": "number" }, "size": { "type": "number" } },
+        "required": ["symbol", "side", "price", "size"]
+      },
+      "OrderStatus": {
+        "type": "object",
+        "properties": { "id": { "type": "string" }, "symbol": { "type": "string" }, "side": { "type": "string" }, "price": { "type": "number" }, "size": { "type": "number" }, "filled": { "type": "number" }, "status": { "type": "string" }, "created_at": { "type": "integer" } }
+      },
+      "AggregateQuote": {
+        "type": "object",
+        "properties": { "symbol": { "type": "string" }, "best_bid": { "type": "number" }, "best_ask": { "type": "number" } }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDE/editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*.tmp
+
+# Logs and temp
+logs/
+*.log
+tmp/
+
+# Build artifacts
+bin/
+build/
+dist/
+out/
+*.exe
+*.dll
+*.so
+*.a
+
+# Go
+coverage/
+*.test
+*.coverprofile
+*.prof
+*.out
+
+# Node/Front-end (future)
+node_modules/
+.cache/
+
+# Sensitive configs
+.env
+*.env
+*.key
+*.pem
+*.crt
+config/*.yaml
+config/*.yml
+!config/example.yaml
+!config/example.yml
+
+# Docs (exclude artifacts but keep root README.md)
+docs/**
+!README.md
+*.md
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+!README.md
+
