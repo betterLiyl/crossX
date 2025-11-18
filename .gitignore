@@ -46,9 +46,9 @@ config/*.yml
 !config/example.yaml
 !config/example.yml
 
-# Docs (exclude artifacts but keep root README.md)
+# Docs (exclude artifacts but keep any README.md)
 docs/**
-!README.md
+!**/README.md
 *.md
 *.pdf
 *.png
@@ -56,5 +56,17 @@ docs/**
 *.jpeg
 *.gif
 *.svg
-!README.md
+!**/README.md
 
+# Rust/Anchor
+target/
+**/target/
+.cargo/
+Cargo.lock
+**/*.rs.bk
+rust-project.json
+onchain/anchor/.anchor/
+onchain/anchor/.pytest_cache/
+onchain/anchor/node_modules/
+onchain/anchor/.nyc_output/
+onchain/anchor/coverage/

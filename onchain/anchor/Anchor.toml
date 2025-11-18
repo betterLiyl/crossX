@@ -1,0 +1,12 @@
+[programs.localnet]
+crossx_anchor = "11111111111111111111111111111111"
+
+[provider]
+cluster = "Localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+build = "anchor build"
+deploy = "anchor deploy"
+test = "mocha -r ts-node/register tests/*.ts"
+
